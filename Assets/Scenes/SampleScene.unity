@@ -849,7 +849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35610e1d7801344785422f3932faf80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hazard2Prefabs: {fileID: 1774767334654376379, guid: aa7b25dfb1fb0fe4db7090122f2f81af, type: 3}
+  hazard2Prefabs: {fileID: 5275150959828781469, guid: aa7b25dfb1fb0fe4db7090122f2f81af, type: 3}
   maxHazard2ToSpan: 5
   hazardPrefabs: {fileID: 1774767334654376379, guid: 0dd0fa51aa655ae44bbdee373e970726, type: 3}
   maxHazardToSpan: 3
@@ -8571,7 +8571,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3076923, y: 1}
+    m_SensorSize: {x: 1.2547003, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

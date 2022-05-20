@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
     { 
         
         var hazardToSpawn = Random.Range(1, maxHazardToSpan);
-        if (score < 10)
+        if (score < 3)
         {
             for (int i = 0; i < hazardToSpawn; i++)
             {
@@ -150,7 +150,7 @@ public class GameManager : MonoBehaviour
        
         var hazard2ToSpawn = Random.Range(1, maxHazard2ToSpan);
 
-        if (score > 10)
+        if (score > 3)
         {
             for (int i = 0; i < hazard2ToSpawn; i++)
             {
