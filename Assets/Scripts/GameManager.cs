@@ -6,7 +6,14 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
+    private GameObject hazard2Prefabs; // span da bomba
+
+    [SerializeField]
+    private int maxHazard2ToSpan = 5; // span da bomba
+
+    [SerializeField]
     private GameObject hazardPrefabs;
+
     [SerializeField]
     private int maxHazardToSpan = 3;
 
@@ -32,6 +39,7 @@ public class GameManager : MonoBehaviour
     private int score;
     private float timer;
     private Coroutine hazardsCoroutine;
+    private Coroutine hazardsCoroutine2;
 
     private bool gameOver;
 
@@ -61,6 +69,8 @@ public class GameManager : MonoBehaviour
         timer = 0;
 
         hazardsCoroutine = StartCoroutine(SpawnHazard());
+
+        hazardsCoroutine2 = StartCoroutine(SpawnHazard2());
     }
 
     private void Update()
@@ -114,28 +124,58 @@ public class GameManager : MonoBehaviour
     }
 
     private IEnumerator SpawnHazard()
-    {
+    { 
+        
         var hazardToSpawn = Random.Range(1, maxHazardToSpan);
-
-        for (int i = 0; i < hazardToSpawn; i++)
+        if (score < 10)
         {
-            var x = Random.Range(-7, 7);
-            var drag = Random.Range(0f, 2f);
+            for (int i = 0; i < hazardToSpawn; i++)
+            {
+                var x = Random.Range(-7, 7);
+                var drag = Random.Range(0f, 2f);
 
-            var hazard = Instantiate(hazardPrefabs, new Vector3(x, 16, 0), Quaternion.identity);
-            hazard.GetComponent<Rigidbody>().drag = drag;
+                var hazard = Instantiate(hazardPrefabs, new Vector3(x, 16, 0), Quaternion.identity);
+                hazard.GetComponent<Rigidbody>().drag = drag;
+            }
         }
-
-
+   
         var timeToWait = Random.Range(0.5f, 1.5f);
         yield return new WaitForSeconds(timeToWait);
 
         yield return SpawnHazard();
     }
 
+    private IEnumerator SpawnHazard2()
+    {
+       
+        var hazard2ToSpawn = Random.Range(1, maxHazard2ToSpan);
+
+        if (score > 10)
+        {
+            for (int i = 0; i < hazard2ToSpawn; i++)
+            {
+                var x = Random.Range(-7, 7);
+                var drag = Random.Range(0f, 2f);
+
+                var hazard = Instantiate(hazard2Prefabs, new Vector3(x, 16, 0), Quaternion.identity);
+                hazard.GetComponent<Rigidbody>().drag = drag;
+
+            }
+        }
+       
+
+        var timeToWait = Random.Range(0.5f, 1.5f);
+        yield return new WaitForSeconds(timeToWait);
+
+        yield return SpawnHazard2();
+    }
+
+
+
     public void GameOver()
     {
         StopCoroutine(hazardsCoroutine);
+        StopCoroutine(hazardsCoroutine2);
         gameOver = true;
 
         if (Time.timeScale < 1)
