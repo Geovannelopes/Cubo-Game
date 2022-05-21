@@ -41,8 +41,9 @@ public class Player : MonoBehaviour
     }
     private void OnEnable()
     {
-        transform.position = new Vector3(0, 0.75f, 0);
-        transform.rotation = Quaternion.identity;
+        transform.position = new Vector3(0, 0.2f, 0);
+        //transform.rotation = Quaternion.identity;
+        transform.rotation = Quaternion.Euler(0,-180,0);
         rb.velocity = Vector3.zero;
 
     }
