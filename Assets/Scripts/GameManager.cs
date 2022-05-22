@@ -6,16 +6,34 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject hazard2Prefabs; // span da bomba
+    private GameObject hazard5Prefabs; // span do monstro
 
     [SerializeField]
-    private int maxHazard2ToSpan = 5; // span da bomba
+    private int maxHazard5ToSpan = 7; // span do monstro
 
     [SerializeField]
-    private GameObject hazardPrefabs;
+    private GameObject hazard4Prefabs; // span da abelha
 
     [SerializeField]
-    private int maxHazardToSpan = 3;
+    private int maxHazard4ToSpan = 6; // span da abelha
+
+    [SerializeField]
+    private GameObject hazard3Prefabs; // spawn do esqueleto
+
+    [SerializeField]
+    private int maxHazard3ToSpan = 5; // spawn do esqueleto
+
+    [SerializeField]
+    private GameObject hazard2Prefabs; // spawn da bomba
+
+    [SerializeField]
+    private int maxHazard2ToSpan = 4; // spawn da bomba
+
+    [SerializeField]
+    private GameObject hazardPrefabs; // spawn da caixa
+
+    [SerializeField]
+    private int maxHazardToSpan = 3; // spawn da caixa
 
     [SerializeField]
     private GameObject mainVCam;
@@ -40,6 +58,9 @@ public class GameManager : MonoBehaviour
     private float timer;
     private Coroutine hazardsCoroutine;
     private Coroutine hazardsCoroutine2;
+    private Coroutine hazardsCoroutine3;
+    private Coroutine hazardsCoroutine4;
+    private Coroutine hazardsCoroutine5;
 
     private bool gameOver;
 
@@ -71,6 +92,12 @@ public class GameManager : MonoBehaviour
         hazardsCoroutine = StartCoroutine(SpawnHazard());
 
         hazardsCoroutine2 = StartCoroutine(SpawnHazard2());
+
+        hazardsCoroutine3 = StartCoroutine(SpawnHazard3());
+
+        hazardsCoroutine4 = StartCoroutine(SpawnHazard4());
+
+        hazardsCoroutine5 = StartCoroutine(SpawnHazard5());
     }
 
     private void Update()
@@ -169,13 +196,90 @@ public class GameManager : MonoBehaviour
 
         yield return SpawnHazard2();
     }
+    
+    private IEnumerator SpawnHazard3()
+    {
+
+        var hazard3ToSpawn = Random.Range(1, maxHazard3ToSpan);
+
+        if (score > 20 && score < 30)
+        {
+            for (int i = 0; i < hazard3ToSpawn; i++)
+            {
+                var x = Random.Range(-7, 7);
+                var drag = Random.Range(0f, 2f);
+
+                var hazard = Instantiate(hazard3Prefabs, new Vector3(x, 16, 0), Quaternion.identity);
+                hazard.GetComponent<Rigidbody>().drag = drag;
+
+            }
+        }
 
 
+        var timeToWait = Random.Range(0.5f, 1.5f);
+        yield return new WaitForSeconds(timeToWait);
+
+        yield return SpawnHazard3();
+    }
+
+    private IEnumerator SpawnHazard4()
+    {
+
+        var hazard4ToSpawn = Random.Range(1, maxHazard4ToSpan);
+
+        if (score > 40 && score < 50)
+        {
+            for (int i = 0; i < hazard4ToSpawn; i++)
+            {
+                var x = Random.Range(-7, 7);
+                var drag = Random.Range(0f, 2f);
+
+                var hazard = Instantiate(hazard4Prefabs, new Vector3(x, 16, 0), Quaternion.identity);
+                hazard.GetComponent<Rigidbody>().drag = drag;
+
+            }
+        }
+
+
+        var timeToWait = Random.Range(0.5f, 1.5f);
+        yield return new WaitForSeconds(timeToWait);
+
+        yield return SpawnHazard4();
+    }
+
+    private IEnumerator SpawnHazard5()
+    {
+
+        var hazard5ToSpawn = Random.Range(1, maxHazard5ToSpan);
+
+        if (score > 12 && score < 15)
+        {
+            for (int i = 0; i < hazard5ToSpawn; i++)
+            {
+                var x = Random.Range(-7, 7);
+                var drag = Random.Range(0f, 2f);
+
+                var hazard = Instantiate(hazard5Prefabs, new Vector3(x, 16, 0), Quaternion.identity);
+                hazard.GetComponent<Rigidbody>().drag = drag;
+
+            }
+        }
+
+
+        var timeToWait = Random.Range(0.5f, 1.5f);
+        yield return new WaitForSeconds(timeToWait);
+
+        yield return SpawnHazard5();
+    }
 
     public void GameOver()
     {
         StopCoroutine(hazardsCoroutine);
         StopCoroutine(hazardsCoroutine2);
+        StopCoroutine(hazardsCoroutine3);
+        StopCoroutine(hazardsCoroutine4);
+        StopCoroutine(hazardsCoroutine5);
+
         gameOver = true;
 
         if (Time.timeScale < 1)

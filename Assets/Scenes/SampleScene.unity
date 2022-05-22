@@ -849,6 +849,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35610e1d7801344785422f3932faf80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hazard5Prefabs: {fileID: 2237563962980634800, guid: 7c21646fcf470fe47ad8c3fbe1bf80f2, type: 3}
+  maxHazard5ToSpan: 7
+  hazard4Prefabs: {fileID: 6702908105810740111, guid: ddb33417b69276c46ab9f31f890dcb13, type: 3}
+  maxHazard4ToSpan: 6
+  hazard3Prefabs: {fileID: 7245172320278582253, guid: b5e8d2948bdcb91468c2756b1328ca71, type: 3}
+  maxHazard3ToSpan: 5
   hazard2Prefabs: {fileID: 5275150959828781469, guid: aa7b25dfb1fb0fe4db7090122f2f81af, type: 3}
   maxHazard2ToSpan: 4
   hazardPrefabs: {fileID: 1774767334654376379, guid: 0dd0fa51aa655ae44bbdee373e970726, type: 3}
@@ -9674,8 +9680,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3392ebdcb1cd54881f245730df54d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceMultiplicer: 1300
-  maximumVelocity: 4
+  forceMultiplicer: 1500
+  maximumVelocity: 5
   deathParticles: {fileID: 7097629051136079003, guid: 26d61cc2e4bcbf04889b6928c92ec103, type: 3}
 --- !u!54 &634592016615671168
 Rigidbody:
