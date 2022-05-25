@@ -12,7 +12,7 @@ public class Hazard : MonoBehaviour
 
     private CinemachineImpulseSource cinemachineImpulseSource;
     private Player player;
-    private AudioSource sound;
+    public AudioSource sound;
 
     private void Awake()
     {

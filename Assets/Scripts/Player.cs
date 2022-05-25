@@ -11,8 +11,8 @@ public class Player : MonoBehaviour
     private float maximumVelocity = 3f;
     [SerializeField]
     private ParticleSystem deathParticles;
-    
 
+    public AudioSource somDoAndar;
     private Rigidbody rb;
     private CinemachineImpulseSource cinemachineImpulseSource;
 
@@ -36,13 +36,12 @@ public class Player : MonoBehaviour
         if (rb.velocity.magnitude <= maximumVelocity)
             { 
                 rb.AddForce(new Vector3(horizontalInput * forceMultiplicer * Time.deltaTime, 0, 0));
-
+                somDoAndar.Play();
             }
     }
     private void OnEnable()
     {
         transform.position = new Vector3(0, 0.2f, 0);
-        //transform.rotation = Quaternion.identity;
         transform.rotation = Quaternion.Euler(0,-180,0);
         rb.velocity = Vector3.zero;
 
