@@ -12,9 +12,16 @@ public class Hazard : MonoBehaviour
 
     private CinemachineImpulseSource cinemachineImpulseSource;
     private Player player;
+    private AudioSource sound;
+
+    private void Awake()
+    {
+        sound = GetComponent<AudioSource>();
+    }
 
     private void Start()
     {
+        
         cinemachineImpulseSource = GetComponent<CinemachineImpulseSource>();
         player = FindObjectOfType<Player>();
 
@@ -31,8 +38,10 @@ public class Hazard : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag("Hazard"))
         {
+            
             Destroy(gameObject);
             Instantiate(breakingEffect, transform.position, Quaternion.identity);
+            sound.Play();
 
             if (player != null)
             {

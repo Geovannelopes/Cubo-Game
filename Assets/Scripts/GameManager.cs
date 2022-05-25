@@ -159,7 +159,7 @@ public class GameManager : MonoBehaviour
             for (int i = 0; i < hazardToSpawn; i++)
             {
                 var x = Random.Range(-7, 7);
-                var drag = Random.Range(0f, 2f);
+                var drag = Random.Range(0f, 1f);
 
                 var hazard = Instantiate(hazardPrefabs, new Vector3(x, 16, 0), Quaternion.identity);
                 hazard.GetComponent<Rigidbody>().drag = drag;
