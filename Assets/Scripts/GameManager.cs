@@ -252,7 +252,7 @@ public class GameManager : MonoBehaviour
 
         var hazard5ToSpawn = Random.Range(1, maxHazard5ToSpan);
 
-        if (score > 40 && score < 50)
+        if (score > 40)
         {
             for (int i = 0; i < hazard5ToSpawn; i++)
             {
